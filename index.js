@@ -6,7 +6,7 @@ const port = 8000;
 const app = express() ;
 
 app.set('view engine' , 'ejs');
-// app.set('views' , path.join(__dirname,'views'));
+app.set('views' , path.join(__dirname,'views'));
 // console.log(__dirname);
 
 app.use(express.urlencoded({extended: true}));
@@ -43,30 +43,37 @@ contacts = [
 
 
 app.get('/',function(req,res){
-    // console.log(__dirname);
 
     return res.render('home',{
         title : 'My Contact',
         contact_list: contacts 
-    
     });
 
 });
 
+app.get('/delete-contact/',function(req,res){
+    console.log(req.query);
+    let phone = req.query.phone;
+    for(let [i,v] of contacts.entries()){
+        if(v.phone == phone){
+            console.log(i,v);
+            contacts.splice(i , 1 );
+        }
+    }
+    return res.redirect('/');
+    
+});
 
 app.post('/contact-list',function(req, res){
-    console.log(req.body);
     contacts.push({
         name: req.body.name,
         phone: req.body.number
-    })
-    // contacts.push(req.body);
+    });
     return res.redirect('back');
 });
 
 
 app.get('/practice',function(req,res){
-    // console.log(res);
     return res.render('practice',{
         title : 'Play with ejs'
     });
