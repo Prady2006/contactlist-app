@@ -31,9 +31,9 @@
         </div>
         <% for(let contact of contact_list) { %>
             <div class="list-items">
-                <a href="/delete-contact/?phone=<%= contact.phone %>&name=<%= contact.name%>"><i class="fas fa-times"></i></a>
-                <span class="contact-name"><%= contact.name %></span>
-                <span><%= contact.phone %></span>
+                <a href="/delete-contact/?id=<%= contact._id %>&name=<%= contact.name %>" class="pad5"><i class="fas fa-times"></i></a>
+                <span class="contact-name pad5"><%= contact.name %></span>
+                <span class="pad5"><%= contact.phone %></span>
             </div>
         <% }%>
     </div>

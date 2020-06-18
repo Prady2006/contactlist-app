@@ -94,6 +94,10 @@ button[type="submit"]{
     margin-right: auto;
     margin-left: 4px;
 }
+.pad5 {
+    padding-top: 7px;
+}
+
 @media screen and (max-width: 450px){
     .container > div {
         width: 70%;
